@@ -19,7 +19,7 @@ class MellatGateway {
     /**
      * Request the payment
      */
-    Request( terminal, username, password, amount, returnPage ) {
+    Request( terminal, username, password, orderId, amount, returnPage ) {
         var _self = this;
         return new Promise( ( resolve, reject ) => {
             _self.initClient().then( function( client ) {
@@ -28,7 +28,7 @@ class MellatGateway {
                     terminalId:             terminal,
                     userName:               username,
                     userPassword:           password,
-                    orderId:                moment().format( 'YMMDDHHmmSS' ),
+                    orderId:                orderId,
                     amount:                 amount,
                     localDate:              moment().format( 'YYMMDD' ),
                     localTime:              moment().format( 'HHmmSS' ),
